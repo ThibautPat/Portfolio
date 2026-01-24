@@ -278,6 +278,159 @@ input, select, textarea {
 	.align-left {
 		text-align: left;
 	}
+	/* Container global pour la section */
+#inspiring-games .game-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+/* Conteneur des liens dans le texte */
+.project-links {
+    margin-top: 10px;   /* espace au-dessus des liens */
+    display: flex;
+    gap: 15px;           /* espace entre les boutons */
+}
+
+/* Style des boutons liens */
+.project-links .button-link {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #f39c12;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.project-links .button-link:hover {
+    background-color: #e67e22;
+}
+
+/* Tous les titres de section */
+section > header h2 {
+    display: inline-block;     
+    border-bottom: 3px solid #f39c12; /* couleur du soulignement */
+    padding-bottom: 5px;       
+    margin-bottom: 20px;       
+}
+
+/* Chaque bloc : image + texte */
+#inspiring-games .game-block {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Bloc image à droite pour les blocs pairs */
+#inspiring-games .game-block:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Image */
+#inspiring-games .image-block {
+    flex: 1;
+    max-width: 400px;
+}
+
+#inspiring-games .image-block img {
+    width: 100%;
+    height: 250px;        /* uniforme */
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Texte */
+#inspiring-games .text-block {
+    flex: 1;
+}
+
+/* Responsive : mobile */
+@media (max-width: 768px) {
+    #inspiring-games .game-block {
+        flex-direction: column !important;
+        text-align: center;
+    }
+    #inspiring-games .image-block img {
+        height: auto;
+    }
+}
+	.posts .bloc {
+    display: flex;
+    flex-wrap: wrap;          /* passe en colonne sur mobile */
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+	}
+
+	/* Alterne image/text et text/image */
+	.posts .bloc:nth-child(even) {
+		flex-direction: row-reverse;
+	}
+
+	/* Bloc texte */
+	.posts .bloc .text-block {
+		flex: 1;
+		min-width: 250px;        /* évite que le texte soit trop petit */
+	}
+
+	/* Bloc image */
+	.posts .bloc .image-block {
+		flex: 1;
+		max-width: 400px;         /* largeur max uniforme */
+	}
+
+	.posts .bloc .image-block img {
+		width: 100%;              /* remplit le conteneur */
+		height: 250px;            /* hauteur uniforme pour toutes les images */
+		object-fit: cover;        /* recadrage sans déformation */
+		border-radius: 8px;
+		display: block;
+	}
+
+	/* Responsive : en mobile, tout passe en colonne */
+	@media (max-width: 768px) {
+		.posts .bloc {
+			flex-direction: column !important;
+			text-align: center;
+		}
+		.posts .bloc .image-block img {
+			height: auto;          /* l'image reprend son ratio naturel */
+		}
+	}
+	.bloc {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		margin-bottom: 40px;
+	}
+
+	.bloc:nth-child(even) {
+		flex-direction: row-reverse; /* alterne image/text et text/image */
+	}
+
+	.text-block {
+		flex: 1;
+	}
+
+	.image-block {
+		flex: 1;
+	}
+	/* Conteneur de l'image */
+	.content-section .posts .bloc .image {
+		max-width: 400px;   /* largeur max de l'image */
+		margin: 0 auto;     /* centre l'image si besoin */
+	}
+
+	/* Image elle-même */
+	.content-section .posts .bloc .image img {
+		width: 100%;        /* prend toute la largeur du conteneur */
+		height: auto;       /* conserve les proportions */
+		object-fit: cover;  /* recadre si besoin */
+		border-radius: 8px; /* coins arrondis */
+	}
 
 	.align-center {
 		text-align: center;
@@ -4685,5 +4838,4 @@ input, select, textarea {
 			box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
 			visibility: visible;
 		}
-
 	}

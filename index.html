@@ -4,6 +4,7 @@
     <title>Portfolio – Développeur Jeux Vidéo</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
@@ -16,157 +17,176 @@
     <div id="intro">
         <h1>Thibaut Patry</h1>
         <p>
-            Développeur C++ / Jeux Vidéo<br />
+            Développeur Jeux Vidéo – C++<br />
             Recherche de stage – Gameplay / Systems / Tools
         </p>
         <ul class="actions">
-            <li><a href="#main" class="button icon solid solo fa-arrow-down scrolly">Voir mes projets</a></li>
+            <li>
+                <a href="#main" class="button icon solid solo fa-arrow-down scrolly">
+                    Entrer
+                </a>
+            </li>
         </ul>
     </div>
 
     <!-- HEADER -->
     <header id="header">
-        <a href="index.html" class="logo">Portfolio JV</a>
+        <a href="#" class="logo">Portfolio JV</a>
     </header>
 
     <!-- NAV -->
     <nav id="nav">
         <ul class="links">
-            <li class="active"><a href="#main">Projets</a></li>
-            <li><a href="#about">À propos</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <ul class="icons">
-            <li>
-                <a href="https://github.com/TON_PSEUDO" class="icon brands fa-github">
-                    <span class="label">GitHub</span>
-                </a>
-            </li>
+            <li><a href="#" onclick="showSection('profile', event)">Profil</a></li>
+            <li><a href="#" onclick="showSection('school', event)">Projets scolaires</a></li>
+            <li><a href="#" onclick="showSection('personal', event)">Projets personnels</a></li>
         </ul>
     </nav>
 
     <!-- MAIN -->
     <div id="main">
 
-        <!-- PROJET PRINCIPAL -->
-        <article class="post featured">
+        <!-- ================= PROFIL ================= -->
+        <section id="profile" class="content-section">
             <header class="major">
-                <h2>Projet principal</h2>
-                <p>
-                    Description claire du projet.<br />
-                    Ce que fait le système / jeu et ton rôle technique.
-                </p>
+                <h2>Mon profil</h2>
             </header>
-            <a href="#" class="image main">
-                <img src="images/projet_principal.jpg" alt="Projet principal" />
-            </a>
-            <ul class="actions special">
-                <li>
-                    <a href="https://github.com/TON_PSEUDO/PROJET" class="button large">
-                        Voir le code
-                    </a>
-                </li>
-            </ul>
-        </article>
 
-        <!-- AUTRES PROJETS -->
-        <section class="posts">
+            <p><strong>Hello, je suis Thibaut.</strong></p>
 
-            <article>
-                <header>
-                    <h2>Projet – Pathfinding A*</h2>
-                </header>
-                <a href="#" class="image fit">
-                    <img src="images/projet1.jpg" alt="Pathfinding A*" />
-                </a>
-                <p>
-                    Implémentation d’un algorithme A* optimisé pour graphes dynamiques.<br />
-                    Langage : C++.
-                </p>
-                <ul class="actions special">
-                    <li>
-                        <a href="https://github.com/TON_PSEUDO/PROJET1" class="button">
-                            Code source
-                        </a>
-                    </li>
-                </ul>
-            </article>
+            <p>
+                Passionné depuis toujours par l’univers des jeux vidéo,
+                il m’a semblé naturel de me diriger vers ce domaine.
+            </p>
 
-            <article>
-                <header>
-                    <h2>Projet – Jeu 2D</h2>
-                </header>
-                <a href="#" class="image fit">
-                    <img src="images/projet2.jpg" alt="Jeu 2D" />
-                </a>
-                <p>
-                    Jeu 2D développé sous Unity.<br />
-                    Gameplay, logique et systèmes principaux.
-                </p>
-                <ul class="actions special">
-                    <li>
-                        <a href="https://github.com/TON_PSEUDO/PROJET2" class="button">
-                            Code source
-                        </a>
-                    </li>
-                </ul>
-            </article>
+            <p>
+                Actuellement en <strong>Bachelor Développeur Informatique,
+                option Jeu Vidéo</strong> au <strong>Gaming Campus à Lyon</strong>,
+                je vous invite à découvrir mes différents projets ci-dessous.
+            </p>
 
-            <article>
-                <header>
-                    <h2>Projet – Outil / Système</h2>
-                </header>
-                <a href="#" class="image fit">
-                    <img src="images/projet3.jpg" alt="Outil" />
-                </a>
-                <p>
-                    Outil technique orienté performance et architecture.<br />
-                    Langage : C++.
-                </p>
-                <ul class="actions special">
-                    <li>
-                        <a href="https://github.com/TON_PSEUDO/PROJET3" class="button">
-                            Code source
-                        </a>
-                    </li>
-                </ul>
-            </article>
+            <p>
+                Mon intérêt se porte particulièrement sur les jeux
+                orientés systèmes, simulation et gameplay émergent,
+                où la profondeur technique soutient directement
+                l’expérience joueur.
+            </p>
+            <p>
+                <em>Enjoy !</em>
+            </p>
 
+        <section id="inspiring-games">
+            <header class="major">
+                <h2>Les jeux qui m'inspirent</h2>
+            </header>
+
+            <div class="game-list">
+
+                <!-- Bloc 1 : image à gauche -->
+                <div class="game-block">
+                    <div class="image-block">
+                        <img src="images/star_citizen.jpg" alt="Star Citizen" />
+                    </div>
+                    <div class="text-block">
+                        <h3>Star Citizen</h3>
+                        <p>
+                            Ambition technique, simulation poussée et systèmes complexes interconnectés.
+                            Une forte inspiration pour la conception de gameplay émergent.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bloc 2 : image à droite -->
+                <div class="game-block">
+                    <div class="image-block">
+                        <img src="images/dishonored.jpg" alt="Dishonored" />
+                    </div>
+                    <div class="text-block">
+                        <h3>Dishonored</h3>
+                        <p>
+                            Gameplay innovant, level design et narration.
+                            Inspiration pour les mécaniques immersives et interactives.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bloc 3 : image à gauche -->
+                <div class="game-block">
+                    <div class="image-block">
+                        <img src="images/Anno1800.jpg" alt="Anno 1800" />
+                    </div>
+                    <div class="text-block">
+                        <h3>Anno 1800</h3>
+                        <p>
+                            Profondeur des systèmes de gestion,
+                            interdépendance des ressources et optimisation continue.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
         </section>
 
-        <!-- A PROPOS -->
-        <section id="about">
+        <!-- ================= PROJETS SCOLAIRES ================= -->
+        <section id="school" class="content-section" style="display: none;">
             <header class="major">
-                <h2>À propos</h2>
+                <h2>Projets scolaires</h2>
             </header>
-            <p>
-                Développeur orienté programmation jeux vidéo.<br />
-                Intérêt particulier pour le C++, les algorithmes,
-                l’optimisation et les systèmes gameplay.
-            </p>
+
+            <section id="inspiring-games">
+
+            <div class="game-list">
+
+                <!-- Bloc projet : image à gauche -->
+                <div class="game-block">
+                    <div class="image-block">
+                        <img src="images/projet1.jpg" alt="Projet Exemple" />
+                    </div>
+                    <div class="text-block">
+                        <h3>Projet Exemple</h3>
+                        <p>
+                            Description du projet : gameplay, logique système, moteur utilisé…
+                        </p>
+                        <div class="icons">
+                            <!-- Logo GitHub -->
+                            <a href="https://github.com/TON_PSEUDO" class="icon brands fa-github">
+                                <span class="label">GitHub</span>
+                            </a>
+                            <!-- Logo Store / Play / App -->
+                            <a href="https://store.example.com/projet" target="_blank">
+                                <img src="icons/store.png" alt="Store" class="project-icon"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        </section>
+
+        <!-- ================= PROJETS PERSONNELS ================= -->
+        <section id="personal" class="content-section" style="display: none;">
+            <header class="major">
+                <h2>Projets personnels</h2>
+            </header>
+
+            <section id="inspiring-games">>
+
+            <div class="game-list">
+
+            </div>
+        </section>
         </section>
 
     </div>
 
-    <!-- FOOTER -->
-    <footer id="footer">
-        <section id="contact">
-            <h3>Contact</h3>
-            <p>
-                Email : ton.email@gmail.com<br />
-                GitHub :
-                <a href="https://github.com/TON_PSEUDO">
-                    github.com/TON_PSEUDO
-                </a>
-            </p>
-        </section>
-    </footer>
-
     <!-- COPYRIGHT -->
     <div id="copyright">
         <ul>
-            <li>&copy; Prénom Nom</li>
-            <li>Template web : <a href="https://html5up.net">HTML5 UP</a></li>
+            <li>&copy; Thibaut Patry</li>
+            <li>Based on template from HTML5 UP</li>
         </ul>
     </div>
 
@@ -180,6 +200,31 @@
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script>
+function showSection(sectionId, event) {
+    event.preventDefault(); // empêche le comportement par défaut
+
+    // Masque toutes les sections
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => section.style.display = 'none');
+
+    // Affiche la section choisie
+    const targetSection = document.getElementById(sectionId);
+    targetSection.style.display = 'block';
+
+    // Scroll vers une hauteur fixe : juste sous le header (#header)
+    const headerHeight = document.getElementById('header').offsetHeight;
+    window.scrollTo({
+        top: headerHeight + 10, // 10px pour un petit padding
+        behavior: 'smooth'       // scroll fluide
+    });
+
+    // Gestion de la classe active dans le menu
+    document.querySelectorAll('#nav .links li').forEach(li => li.classList.remove('active'));
+    event.target.parentElement.classList.add('active');
+}
+</script>
 
 </body>
 </html>
