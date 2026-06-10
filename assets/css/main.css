@@ -319,7 +319,47 @@ section > header h2 {
 #inspiring-games .game-block {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
+
+    padding: 25px;
+    margin: 20px 0;
+
+    border-radius: 24px;
+
+    /* Glass iPhone */
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.18),
+        rgba(255,255,255,0.06)
+    );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,0.20);
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.25),
+        inset 0 1px 1px rgba(255,255,255,0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+#inspiring-games .game-block:hover {
+    transform: translateY(-5px);
+
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.24),
+        rgba(255,255,255,0.08)
+    );
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,0.35),
+        inset 0 1px 2px rgba(255,255,255,0.35);
 }
 
 /* Bloc image à droite pour les blocs pairs */
@@ -335,10 +375,12 @@ section > header h2 {
 
 #inspiring-games .image-block img {
     width: 100%;
-    height: 250px;        /* uniforme */
+    height: 250px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 18px;
     display: block;
+
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
 /* Texte */
@@ -2221,5 +2263,27 @@ section > header h2 {
 			transform: translateX(0);
 			box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
 			visibility: visible;
+		}
+		#inspiring-games .icons {
+		display: flex;
+		gap: 15px;
+		align-items: center;
+		margin-top: 15px;
+		}
+
+		#inspiring-games .icons a {
+		border: none;
+		color: inherit;
+		transition: transform 0.2s ease;
+		}
+
+		#inspiring-games .icons a:hover {
+		transform: scale(1.1);
+		}
+
+		#inspiring-games .project-icon {
+		width: 34px;
+		height: 34px;
+		object-fit: contain;
 		}
 	}
