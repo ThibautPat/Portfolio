@@ -7,50 +7,126 @@ section > header h2 {
 	margin-bottom: 20px;
 }
 
+/* Fond coloré derrière les cartes — indispensable pour voir le verre */
+.game-list-section {
+	position: relative;
+	padding: 2rem;
+	border-radius: 32px;
+	overflow: hidden;
+}
+
+.game-list-section::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background:
+		radial-gradient(circle at 18% 25%, rgba(24, 191, 239, 0.55) 0%, transparent 42%),
+		radial-gradient(circle at 82% 18%, rgba(155, 89, 182, 0.40) 0%, transparent 38%),
+		radial-gradient(circle at 72% 78%, rgba(243, 156, 18, 0.50) 0%, transparent 40%),
+		radial-gradient(circle at 12% 82%, rgba(46, 204, 113, 0.30) 0%, transparent 38%),
+		linear-gradient(145deg, #dce8f2 0%, #f0ebe3 45%, #dde5f5 100%);
+}
+
 .game-list-section .game-list {
+	position: relative;
+	z-index: 1;
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
+	gap: 28px;
+	padding: 0;
 }
 
 .game-list-section .game-block {
+	position: relative;
+	z-index: 1;
 	display: flex;
 	align-items: center;
 	gap: 25px;
-	padding: 25px;
-	margin: 20px 0;
-	border-radius: 24px;
-	background: linear-gradient(
-		135deg,
-		rgba(255, 255, 255, 0.18),
-		rgba(255, 255, 255, 0.06)
-	);
-	backdrop-filter: blur(18px);
-	-webkit-backdrop-filter: blur(18px);
-	border: 1px solid rgba(255, 255, 255, 0.20);
+	padding: 28px;
+	border-radius: 26px;
+
+	background: rgba(255, 255, 255, 0.22);
+	-webkit-backdrop-filter: blur(24px) saturate(180%);
+	backdrop-filter: blur(24px) saturate(180%);
+
+	border: 1px solid rgba(255, 255, 255, 0.55);
+	border-top-color: rgba(255, 255, 255, 0.90);
+	border-left-color: rgba(255, 255, 255, 0.70);
+
 	box-shadow:
-		0 8px 32px rgba(0, 0, 0, 0.25),
-		inset 0 1px 1px rgba(255, 255, 255, 0.25);
+		0 10px 40px rgba(0, 0, 0, 0.10),
+		0 2px 6px rgba(0, 0, 0, 0.05),
+		inset 0 1px 0 rgba(255, 255, 255, 0.85),
+		inset 0 -1px 0 rgba(255, 255, 255, 0.12);
+
 	transition:
-		transform 0.3s ease,
-		box-shadow 0.3s ease,
-		background 0.3s ease;
+		transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		box-shadow 0.35s ease,
+		background 0.35s ease;
+}
+
+/* Reflet lumineux en haut — léger, ne masque pas le flou */
+.game-list-section .game-block::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: linear-gradient(
+		160deg,
+		rgba(255, 255, 255, 0.45) 0%,
+		rgba(255, 255, 255, 0.08) 35%,
+		transparent 55%
+	);
+	pointer-events: none;
+}
+
+/* Ligne specular iPhone */
+.game-list-section .game-block::after {
+	content: '';
+	position: absolute;
+	top: 1px;
+	left: 10%;
+	right: 10%;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, 0.95) 50%,
+		transparent
+	);
+	pointer-events: none;
 }
 
 .game-list-section .game-block:hover {
 	transform: translateY(-5px);
-	background: linear-gradient(
-		135deg,
-		rgba(255, 255, 255, 0.24),
-		rgba(255, 255, 255, 0.08)
-	);
+	background: rgba(255, 255, 255, 0.30);
 	box-shadow:
-		0 12px 40px rgba(0, 0, 0, 0.35),
-		inset 0 1px 2px rgba(255, 255, 255, 0.35);
+		0 18px 50px rgba(0, 0, 0, 0.14),
+		0 4px 10px rgba(0, 0, 0, 0.07),
+		inset 0 1px 0 rgba(255, 255, 255, 0.95),
+		inset 0 -1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* Fallback navigateurs sans backdrop-filter */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+	.game-list-section .game-block {
+		background: rgba(255, 255, 255, 0.72);
+	}
+
+	.game-list-section .game-block:hover {
+		background: rgba(255, 255, 255, 0.82);
+	}
 }
 
 .game-list-section .game-block:nth-child(even) {
 	flex-direction: row-reverse;
+}
+
+.game-list-section .image-block,
+.game-list-section .text-block {
+	position: relative;
+	z-index: 1;
 }
 
 .game-list-section .image-block {
@@ -64,7 +140,8 @@ section > header h2 {
 	object-fit: cover;
 	border-radius: 18px;
 	display: block;
-	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+	border: 1px solid rgba(255, 255, 255, 0.50);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .game-list-section .text-block {
@@ -116,6 +193,10 @@ section > header h2 {
 }
 
 @media (max-width: 768px) {
+	.game-list-section {
+		padding: 1.25rem;
+	}
+
 	.game-list-section .game-block {
 		flex-direction: column !important;
 		text-align: center;
