@@ -251,6 +251,16 @@ function getProjectDescription(project) {
 	return 'Description a completer.';
 }
 
+var DEFAULT_PROJECT_IMAGE = 'images/star_citizen.jpg';
+
+function getProjectImageSrc(project) {
+	return project.coverImage || (project.images && project.images[0]) || DEFAULT_PROJECT_IMAGE;
+}
+
+function getProjectUrl(project) {
+	return 'project.html?project=' + encodeURIComponent(project.slug);
+}
+
 function createProjectTags(tags) {
 	var tagList = document.createElement('div');
 	tagList.className = 'project-tags';
@@ -287,7 +297,7 @@ function createProjectLinks(project, includeDetailLink) {
 
 	if (includeDetailLink !== false) {
 		var detailLink = document.createElement('a');
-		detailLink.href = 'project.html?project=' + encodeURIComponent(project.slug);
+		detailLink.href = getProjectUrl(project);
 		detailLink.className = 'button small project-detail-link';
 		detailLink.textContent = 'Voir le projet';
 		icons.appendChild(detailLink);
@@ -300,20 +310,31 @@ function isProjectInProgress(project) {
 	return project.status && project.status.trim().toLowerCase() === 'en cours';
 }
 
-function createCarouselSlideMeta(project) {
+function createMetaBlock(project, config) {
 	var meta = document.createElement('div');
-	meta.className = 'carousel-slide-meta';
-	meta.dataset.tags = JSON.stringify(project.tags || []);
+	meta.className = config.className;
+
+	if (config.storeTagsData) {
+		meta.dataset.tags = JSON.stringify(project.tags || []);
+	}
 
 	if (project.status) {
 		meta.appendChild(createTextElement('span', 'carousel-tag project-status', project.status));
 	}
 
 	(project.tags || []).forEach(function (tag) {
-		meta.appendChild(createTextElement('span', 'carousel-tag carousel-tag--item', tag));
+		meta.appendChild(createTextElement('span', config.tagClassName, tag));
 	});
 
 	return meta;
+}
+
+function createCarouselSlideMeta(project) {
+	return createMetaBlock(project, {
+		className: 'carousel-slide-meta',
+		tagClassName: 'carousel-tag carousel-tag--item',
+		storeTagsData: true
+	});
 }
 
 function getCarouselMetaMaxHeight(meta, maxLines) {
@@ -386,8 +407,9 @@ function createCarouselSlide(project) {
 	imageBlock.className = 'carousel-slide-image';
 
 	var image = document.createElement('img');
-	image.src = project.coverImage || (project.images && project.images[0]) || 'images/star_citizen.jpg';
+	image.src = getProjectImageSrc(project);
 	image.alt = project.name;
+	image.loading = 'lazy';
 	imageBlock.appendChild(image);
 
 	var content = document.createElement('div');
@@ -434,18 +456,10 @@ function renderCurrentProjectsCarousel(projects) {
 }
 
 function createProjectCardMeta(project) {
-	var meta = document.createElement('div');
-	meta.className = 'project-card-meta';
-
-	if (project.status) {
-		meta.appendChild(createTextElement('span', 'carousel-tag project-status', project.status));
-	}
-
-	(project.tags || []).forEach(function (tag) {
-		meta.appendChild(createTextElement('span', 'carousel-tag', tag));
+	return createMetaBlock(project, {
+		className: 'project-card-meta',
+		tagClassName: 'carousel-tag'
 	});
-
-	return meta;
 }
 
 function updateProjectCardToggle(card, button) {
@@ -459,7 +473,7 @@ function updateProjectCardToggle(card, button) {
 function createProjectCard(project) {
 	var card = document.createElement('article');
 	card.className = 'glass-panel game-block project-card project-card--clickable is-compact';
-	var projectUrl = 'project.html?project=' + encodeURIComponent(project.slug);
+	var projectUrl = getProjectUrl(project);
 
 	card.setAttribute('role', 'link');
 	card.setAttribute('tabindex', '0');
@@ -479,8 +493,9 @@ function createProjectCard(project) {
 	imageBlock.className = 'image-block';
 
 	var image = document.createElement('img');
-	image.src = project.coverImage || (project.images && project.images[0]) || 'images/star_citizen.jpg';
+	image.src = getProjectImageSrc(project);
 	image.alt = project.name;
+	image.loading = 'lazy';
 	imageBlock.appendChild(image);
 
 	var textBlock = document.createElement('div');
@@ -557,15 +572,11 @@ function getFilteredProjects(browserKey) {
 	});
 }
 
-function getEmptyProjectsMessage(browserKey, filters) {
+function getEmptyProjectsMessage(filters) {
 	var hasActiveFilters = normalizeSearchValue(filters.search) || filters.tag;
 
 	if (hasActiveFilters) {
 		return 'Aucun projet ne correspond à votre recherche.';
-	}
-
-	if (browserKey === 'school' || browserKey === 'personal') {
-		return 'Aucun projet pour le moment.';
 	}
 
 	return 'Aucun projet pour le moment.';
@@ -583,7 +594,7 @@ function renderProjectList(browserKey) {
 	container.innerHTML = '';
 
 	if (matchingProjects.length === 0) {
-		container.appendChild(createTextElement('p', 'project-empty', getEmptyProjectsMessage(browserKey, filters)));
+		container.appendChild(createTextElement('p', 'project-empty', getEmptyProjectsMessage(filters)));
 		return;
 	}
 
@@ -748,6 +759,7 @@ function renderProjectDetail(projects) {
 		var image = document.createElement('img');
 		image.src = imagePath;
 		image.alt = project.name;
+		image.loading = 'lazy';
 		figure.appendChild(image);
 		gallery.appendChild(figure);
 	});
