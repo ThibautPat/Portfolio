@@ -5,6 +5,9 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Sora:wght@400;500;600;700&display=swap" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="stylesheet" href="assets/css/portfolio.css" />
@@ -33,7 +36,7 @@
 
 	<!-- HEADER -->
 	<header id="header">
-		<a href="#" class="logo">Portfolio JV</a>
+		<a href="#" class="logo">Thibaut Patry</a>
 	</header>
 
 	<!-- NAV -->
@@ -45,37 +48,117 @@
 		</ul>
 	</nav>
 
+	<nav id="side-nav" class="side-nav" aria-label="Navigation rapide">
+		<a href="#profile" class="side-nav-btn active" data-section="profile" title="Profil" aria-label="Profil">
+			<i class="fas fa-user-astronaut" aria-hidden="true"></i>
+		</a>
+		<a href="#school" class="side-nav-btn" data-section="school" title="Projets scolaires" aria-label="Projets scolaires">
+			<i class="fas fa-graduation-cap" aria-hidden="true"></i>
+		</a>
+		<a href="#personal" class="side-nav-btn" data-section="personal" title="Projets personnels" aria-label="Projets personnels">
+			<i class="fas fa-rocket" aria-hidden="true"></i>
+		</a>
+	</nav>
+
 	<!-- MAIN -->
 	<div id="main">
 
 		<!-- PROFIL -->
 		<section id="profile" class="content-section">
-			<header class="major">
+			<header class="major profile-header">
 				<h2>Mon profil</h2>
 			</header>
 
-			<p><strong>Hello, je suis Thibaut.</strong></p>
+			<div class="glass-panel profile-glass-panel">
+				<div class="profile-glass-content">
+					<p><strong>Hello, je suis Thibaut.</strong></p>
 
-			<p>
-				Passionné depuis toujours par l'univers des jeux vidéo,
-				il m'a semblé naturel de me diriger vers ce domaine.
-			</p>
+					<p>
+						Passionné depuis toujours par l'univers des jeux vidéo,
+						il m'a semblé naturel de me diriger vers ce domaine.
+					</p>
 
-			<p>
-				Actuellement en <strong>Bachelor Développeur Informatique,
-				option Jeu Vidéo</strong> au <strong>Gaming Campus à Lyon</strong>,
-				je vous invite à découvrir mes différents projets ci-dessous.
-			</p>
+					<p>
+						Actuellement en <strong>Bachelor Développeur Informatique,
+						option Jeu Vidéo</strong> au <strong>Gaming Campus à Lyon</strong>,
+						je vous invite à découvrir mes différents projets ci-dessous.
+					</p>
 
-			<p>
-				Mon intérêt se porte particulièrement sur les jeux
-				orientés systèmes, simulation et gameplay émergent,
-				où la profondeur technique soutient directement
-				l'expérience joueur.
-			</p>
-			<p>
-				<em>Enjoy !</em>
-			</p>
+					<p>
+						Mon intérêt se porte particulièrement sur les jeux
+						orientés systèmes, simulation et gameplay émergent,
+						où la profondeur technique soutient directement
+						l'expérience joueur.
+					</p>
+					<p>
+						<em>Enjoy !</em>
+					</p>
+				</div>
+
+				<div class="profile-photo-wrap">
+					<img src="images/profile.jpg" alt="Thibaut Patry" />
+				</div>
+			</div>
+
+			<section class="current-projects-section">
+				<header class="major">
+					<h2>Mes projets actuels</h2>
+				</header>
+
+				<div class="projects-carousel" data-carousel>
+					<button type="button" class="carousel-btn carousel-btn--prev" aria-label="Projet précédent"></button>
+
+					<div class="carousel-viewport">
+						<div class="carousel-track">
+							<article class="glass-panel carousel-slide">
+								<div class="carousel-slide-image">
+									<img src="images/star_citizen.jpg" alt="Système de gameplay" />
+								</div>
+								<div class="carousel-slide-content">
+									<span class="carousel-tag">En cours</span>
+									<h3>Système de gameplay émergent</h3>
+									<p>
+										Prototype C++ focalisé sur l'interconnexion de systèmes
+										et les comportements émergents côté joueur.
+									</p>
+								</div>
+							</article>
+
+							<article class="glass-panel carousel-slide">
+								<div class="carousel-slide-image">
+									<img src="images/dishonored.jpg" alt="Outil de level design" />
+								</div>
+								<div class="carousel-slide-content">
+									<span class="carousel-tag">En cours</span>
+									<h3>Outil interne de level design</h3>
+									<p>
+										Éditeur léger pour accélérer l'itération sur les niveaux
+										et tester rapidement les mécaniques de jeu.
+									</p>
+								</div>
+							</article>
+
+							<article class="glass-panel carousel-slide">
+								<div class="carousel-slide-image">
+									<img src="images/Anno1800.jpg" alt="Simulation de ressources" />
+								</div>
+								<div class="carousel-slide-content">
+									<span class="carousel-tag">En cours</span>
+									<h3>Simulation de ressources</h3>
+									<p>
+										Boucle de gestion et d'optimisation inspirée des jeux de simulation,
+										avec focus sur la profondeur système.
+									</p>
+								</div>
+							</article>
+						</div>
+					</div>
+
+					<button type="button" class="carousel-btn carousel-btn--next" aria-label="Projet suivant"></button>
+
+					<div class="carousel-dots" role="tablist" aria-label="Navigation du carrousel"></div>
+				</div>
+			</section>
 
 			<section class="game-list-section">
 				<header class="major">
@@ -83,7 +166,7 @@
 				</header>
 
 				<div class="game-list">
-					<div class="game-block">
+					<div class="glass-panel game-block">
 						<div class="image-block">
 							<img src="images/star_citizen.jpg" alt="Star Citizen" />
 						</div>
@@ -96,7 +179,7 @@
 						</div>
 					</div>
 
-					<div class="game-block">
+					<div class="glass-panel game-block">
 						<div class="image-block">
 							<img src="images/dishonored.jpg" alt="Dishonored" />
 						</div>
@@ -109,7 +192,7 @@
 						</div>
 					</div>
 
-					<div class="game-block">
+					<div class="glass-panel game-block">
 						<div class="image-block">
 							<img src="images/Anno1800.jpg" alt="Anno 1800" />
 						</div>
@@ -133,7 +216,7 @@
 
 			<div class="game-list-section">
 				<div class="game-list">
-					<div class="game-block">
+					<div class="glass-panel game-block">
 						<div class="image-block">
 							<img src="images/star_citizen.jpg" alt="Projet Exemple" />
 						</div>
@@ -168,14 +251,6 @@
 			</div>
 		</section>
 
-	</div>
-
-	<!-- COPYRIGHT -->
-	<div id="copyright">
-		<ul>
-			<li>&copy; Thibaut Patry</li>
-			<li>Based on template from HTML5 UP</li>
-		</ul>
 	</div>
 
 </div>

@@ -1,36 +1,475 @@
-/* Styles custom du portfolio (contenu, blocs projets/jeux) */
+/* Styles custom du portfolio — thème Deep Space */
+
+:root {
+	--font-body: 'DM Sans', 'Segoe UI', sans-serif;
+	--font-display: 'Sora', 'DM Sans', sans-serif;
+	--glass-bg: rgba(45, 38, 85, 0.55);
+	--glass-bg-hover: rgba(55, 45, 100, 0.65);
+	--glass-border: rgba(120, 90, 220, 0.35);
+	--glass-border-top: rgba(160, 130, 255, 0.55);
+	--glass-border-left: rgba(100, 80, 200, 0.45);
+	--glass-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+	--glass-shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.35);
+	--accent: #6c5ce7;
+	--accent-hover: #8b7cf7;
+	--heading-accent: #7c6cf0;
+}
+
+/* ── Typographie ── */
+
+body,
+body input,
+body select,
+body textarea,
+#main,
+#main p {
+	font-family: var(--font-body) !important;
+	font-weight: 400;
+	letter-spacing: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+#intro h1,
+#intro p,
+#header .logo,
+#nav ul.links li a,
+.side-nav-btn,
+header.major h2,
+section > header h2,
+#main h3 {
+	font-family: var(--font-display) !important;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+#header .logo {
+	text-transform: none;
+	letter-spacing: 0.04em;
+}
+
+/* ── Fond Deep Space (léger) ── */
+
+body {
+	background-color: #050810;
+}
+
+body::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	pointer-events: none;
+	opacity: 0.035;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+	background-repeat: repeat;
+	background-size: 180px 180px;
+}
+
+#wrapper > .bg {
+	background-color: #050810 !important;
+	background-image:
+		radial-gradient(ellipse at 20% 80%, rgba(30, 80, 200, 0.22) 0%, transparent 55%),
+		radial-gradient(ellipse at 80% 20%, rgba(100, 50, 200, 0.28) 0%, transparent 50%),
+		linear-gradient(170deg, #060a18 0%, #0c1030 45%, #12082a 100%) !important;
+	background-size: 100% 100% !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+}
+
+.starfield-canvas {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	width: 100%;
+	height: 100%;
+}
+
+#main {
+	background: transparent;
+	color: #dce3f5;
+}
+
+#main > * {
+	border-top-color: rgba(100, 80, 180, 0.25);
+}
+
+#main h1,
+#main h2,
+#main h3,
+#main h4,
+#main strong,
+#main b {
+	color: #eef1ff;
+}
+
+#main a {
+	color: #8b9cf7;
+	border-bottom-color: rgba(139, 156, 247, 0.4);
+}
+
+#main a:hover {
+	color: #b8a4ff !important;
+}
+
+header.major .date:before,
+header.major .date:after {
+	border-top-color: rgba(100, 80, 180, 0.35);
+}
+
+#nav ul.links li.active {
+	background-color: rgba(100, 80, 200, 0.35);
+}
+
+#nav ul.links li.active a {
+	color: #eef1ff;
+}
+
+#nav ul.links li.active a:hover {
+	color: #b8a4ff !important;
+}
 
 section > header h2 {
 	display: inline-block;
-	border-bottom: 3px solid #f39c12;
+	border-bottom: 3px solid var(--heading-accent);
 	padding-bottom: 5px;
 	margin-bottom: 20px;
 }
 
-/* Fond coloré derrière les cartes — indispensable pour voir le verre */
-.game-list-section {
-	position: relative;
-	padding: 2rem;
-	border-radius: 32px;
-	overflow: hidden;
+/* ── Navigation latérale ── */
+
+.side-nav {
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	z-index: 100;
+	display: flex;
+	flex-direction: row;
+	gap: 0.35rem;
+	padding: 0.35rem;
+	border-radius: 10px;
+	background: rgba(30, 25, 60, 0.8);
+	border: 1px solid rgba(120, 90, 220, 0.3);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+	opacity: 0;
+	visibility: hidden;
+	transform: translate(-0.75rem, -0.5rem);
+	transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
 }
 
-.game-list-section::before {
+.side-nav.is-visible {
+	opacity: 1;
+	visibility: visible;
+	transform: translate(0, 0);
+}
+
+.side-nav-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	padding: 0;
+	border-radius: 8px;
+	color: #b8c0e0;
+	text-decoration: none;
+	border: none;
+	font-size: 0.7rem;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.side-nav-btn i {
+	font-size: 0.8rem;
+	line-height: 1;
+}
+
+.side-nav-btn:hover {
+	color: #eef1ff;
+	background: rgba(100, 80, 200, 0.25);
+}
+
+.side-nav-btn.active {
+	color: #eef1ff;
+	background: rgba(100, 80, 200, 0.4);
+	box-shadow: inset 0 0 12px rgba(120, 90, 220, 0.2);
+}
+
+/* ── Panneau glass (perf) ── */
+
+.glass-panel {
+	position: relative;
+	padding: 2rem 2.5rem;
+	border-radius: 26px;
+	background: var(--glass-bg);
+	border: 1px solid var(--glass-border);
+	border-top-color: var(--glass-border-top);
+	border-left-color: var(--glass-border-left);
+	box-shadow: var(--glass-shadow);
+	transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+	.glass-panel {
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+	}
+}
+
+.glass-panel::before {
 	content: '';
 	position: absolute;
 	inset: 0;
-	z-index: 0;
-	background:
-		radial-gradient(circle at 18% 25%, rgba(24, 191, 239, 0.55) 0%, transparent 42%),
-		radial-gradient(circle at 82% 18%, rgba(155, 89, 182, 0.40) 0%, transparent 38%),
-		radial-gradient(circle at 72% 78%, rgba(243, 156, 18, 0.50) 0%, transparent 40%),
-		radial-gradient(circle at 12% 82%, rgba(46, 204, 113, 0.30) 0%, transparent 38%),
-		linear-gradient(145deg, #dce8f2 0%, #f0ebe3 45%, #dde5f5 100%);
+	border-radius: inherit;
+	background: linear-gradient(
+		160deg,
+		rgba(160, 140, 255, 0.12) 0%,
+		transparent 45%
+	);
+	pointer-events: none;
+}
+
+.glass-panel > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* ── Profil ── */
+
+.profile-header {
+	margin-bottom: 2rem;
+}
+
+.profile-glass-panel {
+	display: flex;
+	flex-direction: row;
+	gap: 2.5rem;
+	align-items: stretch;
+	margin-bottom: 3rem;
+}
+
+.profile-glass-content {
+	flex: 1;
+	min-width: 0;
+}
+
+.profile-glass-content p {
+	margin-bottom: 1.25rem;
+	line-height: 1.7;
+}
+
+.profile-glass-content p:last-child {
+	margin-bottom: 0;
+}
+
+.profile-photo-wrap {
+	flex: 0 0 240px;
+	width: 240px;
+	align-self: stretch;
+}
+
+.profile-photo-wrap img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 16px;
+	display: block;
+	border: 1px solid rgba(160, 130, 255, 0.35);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Carrousel projets actuels ── */
+
+.current-projects-section {
+	margin-bottom: 3rem;
+}
+
+.projects-carousel {
+	display: grid;
+	grid-template-columns: 20% 60% 20%;
+	grid-template-rows: auto auto;
+	align-items: center;
+	row-gap: 1rem;
+	width: 100%;
+}
+
+.carousel-viewport {
+	grid-column: 2;
+	grid-row: 1;
+	overflow: hidden;
+	border-radius: 26px;
+	min-width: 0;
+}
+
+.carousel-track {
+	display: flex;
+	transition: transform 0.35s ease;
+	will-change: transform;
+}
+
+.projects-carousel .carousel-slide {
+	flex: 0 0 100%;
+	display: flex;
+	align-items: center;
+	gap: 25px;
+	min-width: 0;
+	padding: 28px;
+	border-radius: 26px;
+}
+
+.carousel-slide-image {
+	flex: 0 0 auto;
+	width: 250px;
+}
+
+.carousel-slide-image img {
+	width: 250px;
+	height: 250px;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	border-radius: 18px;
+	display: block;
+	border: 1px solid rgba(160, 130, 255, 0.30);
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.carousel-slide-content {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.carousel-slide-content h3 {
+	margin-bottom: 0.75rem;
+}
+
+.carousel-slide-content p {
+	line-height: 1.7;
+	margin: 0;
+}
+
+.carousel-tag {
+	display: inline-block;
+	width: fit-content;
+	margin-bottom: 0.5rem;
+	padding: 0.1rem 0.4rem;
+	border-radius: 4px;
+	font-size: 0.62rem;
+	font-weight: 600;
+	line-height: 1.35;
+	font-family: var(--font-display);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: #d4c8ff;
+	background: rgba(108, 92, 231, 0.22);
+	border: 1px solid rgba(140, 120, 230, 0.28);
+}
+
+.carousel-btn {
+	grid-row: 1;
+	width: auto;
+	height: auto;
+	min-height: 0;
+	background: none;
+	border: none;
+	padding: 0.35rem;
+	color: rgba(190, 175, 255, 0.85);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	opacity: 0;
+	pointer-events: none;
+	align-self: center;
+	justify-self: center;
+	transition: opacity 0.3s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.projects-carousel:hover .carousel-btn,
+.projects-carousel:focus-within .carousel-btn {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.carousel-btn::after {
+	content: '';
+	display: block;
+	width: 0.65rem;
+	height: 0.65rem;
+	border: none;
+	transition: box-shadow 0.25s ease;
+}
+
+.carousel-btn--prev::after {
+	border-top: 2px solid currentColor;
+	border-left: 2px solid currentColor;
+	transform: rotate(-45deg);
+}
+
+.carousel-btn--next::after {
+	border-top: 2px solid currentColor;
+	border-right: 2px solid currentColor;
+	transform: rotate(45deg);
+}
+
+.carousel-btn:hover {
+	color: #eef1ff;
+	transform: scale(1.12);
+}
+
+.carousel-btn:hover::after {
+	box-shadow: 0 0 10px rgba(160, 140, 255, 0.5);
+}
+
+.carousel-btn--prev {
+	grid-column: 1;
+}
+
+.carousel-btn--next {
+	grid-column: 3;
+}
+
+@media (hover: none) {
+	.projects-carousel .carousel-btn {
+		opacity: 1;
+		pointer-events: auto;
+	}
+}
+
+.carousel-dots {
+	grid-column: 1 / -1;
+	grid-row: 2;
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
+	margin-top: 0;
+}
+
+.carousel-dot {
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	border: none;
+	padding: 0;
+	background: rgba(140, 120, 230, 0.35);
+	cursor: pointer;
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-dot.active {
+	background: var(--accent);
+	transform: scale(1.2);
+}
+
+/* ── Liste de jeux / projets ── */
+
+.game-list-section {
+	padding: 0;
 }
 
 .game-list-section .game-list {
-	position: relative;
-	z-index: 1;
 	display: flex;
 	flex-direction: column;
 	gap: 28px;
@@ -38,95 +477,14 @@ section > header h2 {
 }
 
 .game-list-section .game-block {
-	position: relative;
-	z-index: 1;
 	display: flex;
 	align-items: center;
 	gap: 25px;
 	padding: 28px;
-	border-radius: 26px;
-
-	background: rgba(255, 255, 255, 0.22);
-	-webkit-backdrop-filter: blur(24px) saturate(180%);
-	backdrop-filter: blur(24px) saturate(180%);
-
-	border: 1px solid rgba(255, 255, 255, 0.55);
-	border-top-color: rgba(255, 255, 255, 0.90);
-	border-left-color: rgba(255, 255, 255, 0.70);
-
-	box-shadow:
-		0 10px 40px rgba(0, 0, 0, 0.10),
-		0 2px 6px rgba(0, 0, 0, 0.05),
-		inset 0 1px 0 rgba(255, 255, 255, 0.85),
-		inset 0 -1px 0 rgba(255, 255, 255, 0.12);
-
-	transition:
-		transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-		box-shadow 0.35s ease,
-		background 0.35s ease;
-}
-
-/* Reflet lumineux en haut — léger, ne masque pas le flou */
-.game-list-section .game-block::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	border-radius: inherit;
-	background: linear-gradient(
-		160deg,
-		rgba(255, 255, 255, 0.45) 0%,
-		rgba(255, 255, 255, 0.08) 35%,
-		transparent 55%
-	);
-	pointer-events: none;
-}
-
-/* Ligne specular iPhone */
-.game-list-section .game-block::after {
-	content: '';
-	position: absolute;
-	top: 1px;
-	left: 10%;
-	right: 10%;
-	height: 1px;
-	background: linear-gradient(
-		90deg,
-		transparent,
-		rgba(255, 255, 255, 0.95) 50%,
-		transparent
-	);
-	pointer-events: none;
-}
-
-.game-list-section .game-block:hover {
-	transform: translateY(-5px);
-	background: rgba(255, 255, 255, 0.30);
-	box-shadow:
-		0 18px 50px rgba(0, 0, 0, 0.14),
-		0 4px 10px rgba(0, 0, 0, 0.07),
-		inset 0 1px 0 rgba(255, 255, 255, 0.95),
-		inset 0 -1px 0 rgba(255, 255, 255, 0.18);
-}
-
-/* Fallback navigateurs sans backdrop-filter */
-@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-	.game-list-section .game-block {
-		background: rgba(255, 255, 255, 0.72);
-	}
-
-	.game-list-section .game-block:hover {
-		background: rgba(255, 255, 255, 0.82);
-	}
 }
 
 .game-list-section .game-block:nth-child(even) {
 	flex-direction: row-reverse;
-}
-
-.game-list-section .image-block,
-.game-list-section .text-block {
-	position: relative;
-	z-index: 1;
 }
 
 .game-list-section .image-block {
@@ -140,12 +498,16 @@ section > header h2 {
 	object-fit: cover;
 	border-radius: 18px;
 	display: block;
-	border: 1px solid rgba(255, 255, 255, 0.50);
-	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+	border: 1px solid rgba(160, 130, 255, 0.30);
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 .game-list-section .text-block {
 	flex: 1;
+}
+
+.game-list-section .text-block p {
+	line-height: 1.7;
 }
 
 .game-list-section .icons {
@@ -180,21 +542,58 @@ section > header h2 {
 .project-links .button-link {
 	display: inline-block;
 	padding: 6px 12px;
-	background-color: #f39c12;
+	background-color: var(--accent);
 	color: #fff;
 	border-radius: 4px;
 	text-decoration: none;
-	font-weight: bold;
-	transition: background 0.3s;
+	font-weight: 600;
+	font-family: var(--font-display);
+	font-size: 0.8rem;
+	letter-spacing: 0.02em;
+	transition: background 0.2s;
 }
 
 .project-links .button-link:hover {
-	background-color: #e67e22;
+	background-color: var(--accent-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.glass-panel,
+	.side-nav,
+	.side-nav-btn,
+	.game-list-section .game-block,
+	.carousel-track {
+		transition: none;
+	}
+}
+
+@media (max-width: 980px) {
+	.side-nav {
+		display: none;
+	}
 }
 
 @media (max-width: 768px) {
-	.game-list-section {
-		padding: 1.25rem;
+	.profile-glass-panel {
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.profile-photo-wrap {
+		flex: none;
+		width: 100%;
+		max-width: 240px;
+		margin: 0 auto;
+		order: -1;
+	}
+
+	.profile-photo-wrap img {
+		height: auto;
+		aspect-ratio: 1;
+	}
+
+	.glass-panel {
+		padding: 1.5rem;
 	}
 
 	.game-list-section .game-block {
@@ -204,5 +603,28 @@ section > header h2 {
 
 	.game-list-section .image-block img {
 		height: auto;
+	}
+
+	.projects-carousel {
+		grid-template-columns: 15% 70% 15%;
+	}
+
+	.carousel-slide {
+		flex-direction: column !important;
+		text-align: center;
+		padding: 1.5rem;
+	}
+
+	.carousel-slide-image {
+		width: 100%;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+
+	.carousel-slide-image img {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1 / 1;
+		max-height: 250px;
 	}
 }
