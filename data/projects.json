@@ -1,0 +1,67 @@
+{
+  "projects": [
+    {
+      "slug": "systeme-gameplay-emergent",
+      "name": "Système de gameplay émergent",
+      "date": "2026",
+      "category": "school",
+      "status": "En cours",
+      "tags": ["C++", "Gameplay", "Solo"],
+      "coverImage": "images/star_citizen.jpg",
+      "images": [
+        "images/star_citizen.jpg",
+        "images/dishonored.jpg"
+      ],
+      "descriptions": [
+        "Prototype C++ focalisé sur l'interconnexion de systèmes et les comportements émergents côté joueur.",
+        "Le projet explore la manière dont plusieurs mécaniques simples peuvent produire des situations de gameplay plus riches."
+      ],
+      "links": {
+        "github": "https://github.com/TON_PSEUDO",
+        "store": ""
+      }
+    },
+    {
+      "slug": "outil-level-design",
+      "name": "Outil interne de level design",
+      "date": "2026",
+      "category": "school",
+      "status": "En cours",
+      "tags": ["Tools", "Level Design", "Groupe", "Blueprint"],
+      "coverImage": "images/dishonored.jpg",
+      "images": [
+        "images/dishonored.jpg",
+        "images/Anno1800.jpg"
+      ],
+      "descriptions": [
+        "Editeur léger pour accélérer l'itération sur les niveaux et tester rapidement les mécaniques de jeu.",
+        "L'objectif est de réduire le temps entre une idée de design et son test en conditions jouables."
+      ],
+      "links": {
+        "github": "",
+        "store": ""
+      }
+    },
+    {
+      "slug": "simulation-ressources",
+      "name": "Simulation de ressources",
+      "date": "2026",
+      "category": "personal",
+      "status": "En cours",
+      "tags": ["Simulation", "Solo", "C++", "IA"],
+      "coverImage": "images/Anno1800.jpg",
+      "images": [
+        "images/Anno1800.jpg",
+        "images/star_citizen.jpg"
+      ],
+      "descriptions": [
+        "Boucle de gestion et d'optimisation inspirée des jeux de simulation, avec focus sur la profondeur système.",
+        "Le projet sert de terrain d'expérimentation pour les interactions entre ressources, production et contraintes joueur."
+      ],
+      "links": {
+        "github": "",
+        "store": ""
+      }
+    }
+  ]
+}

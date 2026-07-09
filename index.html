@@ -45,6 +45,7 @@
 	<nav id="nav">
 		<ul class="links">
 			<li class="active"><a href="#profile" data-section="profile">Profil</a></li>
+			<li><a href="#all" data-section="all">Ensemble de mes projets</a></li>
 			<li><a href="#school" data-section="school">Projets scolaires</a></li>
 			<li><a href="#personal" data-section="personal">Projets personnels</a></li>
 		</ul>
@@ -53,6 +54,9 @@
 	<nav id="side-nav" class="side-nav" aria-label="Navigation rapide">
 		<a href="#profile" class="side-nav-btn active" data-section="profile" title="Profil" aria-label="Profil">
 			<i class="fas fa-user-astronaut" aria-hidden="true"></i>
+		</a>
+		<a href="#all" class="side-nav-btn" data-section="all" title="Ensemble de mes projets" aria-label="Ensemble de mes projets">
+			<i class="fas fa-th-large" aria-hidden="true"></i>
 		</a>
 		<a href="#school" class="side-nav-btn" data-section="school" title="Projets scolaires" aria-label="Projets scolaires">
 			<i class="fas fa-graduation-cap" aria-hidden="true"></i>
@@ -67,10 +71,6 @@
 
 		<!-- PROFIL -->
 		<section id="profile" class="content-section">
-			<header class="major profile-header">
-				<h2>Mon profil</h2>
-			</header>
-
 			<div class="glass-panel profile-glass-panel">
 				<div class="profile-glass-content">
 					<p><strong>Hello, je suis Thibaut.</strong></p>
@@ -111,49 +111,7 @@
 					<button type="button" class="carousel-btn carousel-btn--prev" aria-label="Projet précédent"></button>
 
 					<div class="carousel-viewport">
-						<div class="carousel-track">
-							<article class="glass-panel carousel-slide">
-								<div class="carousel-slide-image">
-									<img src="images/star_citizen.jpg" alt="Système de gameplay" />
-								</div>
-								<div class="carousel-slide-content">
-									<span class="carousel-tag">En cours</span>
-									<h3>Système de gameplay émergent</h3>
-									<p>
-										Prototype C++ focalisé sur l'interconnexion de systèmes
-										et les comportements émergents côté joueur.
-									</p>
-								</div>
-							</article>
-
-							<article class="glass-panel carousel-slide">
-								<div class="carousel-slide-image">
-									<img src="images/dishonored.jpg" alt="Outil de level design" />
-								</div>
-								<div class="carousel-slide-content">
-									<span class="carousel-tag">En cours</span>
-									<h3>Outil interne de level design</h3>
-									<p>
-										Éditeur léger pour accélérer l'itération sur les niveaux
-										et tester rapidement les mécaniques de jeu.
-									</p>
-								</div>
-							</article>
-
-							<article class="glass-panel carousel-slide">
-								<div class="carousel-slide-image">
-									<img src="images/Anno1800.jpg" alt="Simulation de ressources" />
-								</div>
-								<div class="carousel-slide-content">
-									<span class="carousel-tag">En cours</span>
-									<h3>Simulation de ressources</h3>
-									<p>
-										Boucle de gestion et d'optimisation inspirée des jeux de simulation,
-										avec focus sur la profondeur système.
-									</p>
-								</div>
-							</article>
-						</div>
+						<div class="carousel-track" data-current-projects></div>
 					</div>
 
 					<button type="button" class="carousel-btn carousel-btn--next" aria-label="Projet suivant"></button>
@@ -210,32 +168,59 @@
 			</section>
 		</section>
 
+		<!-- ENSEMBLE DES PROJETS -->
+		<section id="all" class="content-section" style="display: none;">
+			<div class="project-browser" data-project-browser="all">
+				<div class="glass-panel project-filters">
+					<div class="project-search">
+						<label class="project-filter-label" for="project-search-all">Rechercher un projet</label>
+						<input
+							type="search"
+							id="project-search-all"
+							class="project-search-input"
+							data-project-search
+							placeholder="Nom du projet..."
+							autocomplete="off"
+						/>
+					</div>
+					<div class="project-tag-filter">
+						<span class="project-filter-label">Filtrer par tag</span>
+						<div class="project-tag-list" data-project-tag-list></div>
+					</div>
+				</div>
+
+				<div class="game-list-section">
+					<div class="game-list" id="all-projects" data-project-list="all">
+						<p class="project-loading">Chargement des projets...</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<!-- PROJETS SCOLAIRES -->
 		<section id="school" class="content-section" style="display: none;">
-			<header class="major">
-				<h2>Projets scolaires</h2>
-			</header>
+			<div class="project-browser" data-project-browser="school">
+				<div class="glass-panel project-filters">
+					<div class="project-search">
+						<label class="project-filter-label" for="project-search-school">Rechercher un projet</label>
+						<input
+							type="search"
+							id="project-search-school"
+							class="project-search-input"
+							data-project-search
+							placeholder="Nom du projet..."
+							autocomplete="off"
+						/>
+					</div>
+					<div class="project-tag-filter">
+						<span class="project-filter-label">Filtrer par tag</span>
+						<div class="project-tag-list" data-project-tag-list></div>
+					</div>
+				</div>
 
-			<div class="game-list-section">
-				<div class="game-list">
-					<div class="glass-panel game-block">
-						<div class="image-block">
-							<img src="images/star_citizen.jpg" alt="Projet Exemple" />
-						</div>
-						<div class="text-block">
-							<h3>Projet Exemple</h3>
-							<p>
-								Description du projet : gameplay, logique système, moteur utilisé…
-							</p>
-							<div class="icons">
-								<a href="https://github.com/TON_PSEUDO" class="icon brands fa-github">
-									<span class="label">GitHub</span>
-								</a>
-								<a href="https://store.example.com/projet" target="_blank">
-									<img src="icons/store.png" alt="Store" class="project-icon" />
-								</a>
-							</div>
-						</div>
+				<div class="game-list-section">
+					<div class="game-list" id="school-projects" data-project-list="school">
+						<p class="project-loading">Chargement des projets...</p>
 					</div>
 				</div>
 			</div>
@@ -243,12 +228,29 @@
 
 		<!-- PROJETS PERSONNELS -->
 		<section id="personal" class="content-section" style="display: none;">
-			<header class="major">
-				<h2>Projets personnels</h2>
-			</header>
+			<div class="project-browser" data-project-browser="personal">
+				<div class="glass-panel project-filters">
+					<div class="project-search">
+						<label class="project-filter-label" for="project-search-personal">Rechercher un projet</label>
+						<input
+							type="search"
+							id="project-search-personal"
+							class="project-search-input"
+							data-project-search
+							placeholder="Nom du projet..."
+							autocomplete="off"
+						/>
+					</div>
+					<div class="project-tag-filter">
+						<span class="project-filter-label">Filtrer par tag</span>
+						<div class="project-tag-list" data-project-tag-list></div>
+					</div>
+				</div>
 
-			<div class="game-list-section">
-				<div class="game-list">
+				<div class="game-list-section">
+					<div class="game-list" id="personal-projects" data-project-list="personal">
+						<p class="project-loading">Chargement des projets...</p>
+					</div>
 				</div>
 			</div>
 		</section>

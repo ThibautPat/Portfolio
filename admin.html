@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+	<title>Generateur de projet - Portfolio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Sora:wght@400;500;600;700&display=swap" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/portfolio.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+
+<div id="wrapper" class="fade-in">
+
+	<div class="bg fixed"></div>
+
+	<header id="header">
+		<a href="index.html" class="logo">Thibaut Patry</a>
+	</header>
+
+	<nav id="nav">
+		<ul class="links">
+			<li><a href="index.html">Portfolio</a></li>
+			<li class="active"><a href="admin.html">Generateur JSON</a></li>
+		</ul>
+	</nav>
+
+	<div id="main">
+		<section class="content-section admin-section">
+			<header class="major">
+				<h2>Generer un projet</h2>
+				<p>Remplis le formulaire, puis colle le JSON genere dans <code>data/projects.json</code>.</p>
+			</header>
+
+			<div class="glass-panel admin-panel">
+				<form id="project-generator-form">
+					<div class="fields">
+						<div class="field half">
+							<label for="project-name">Nom</label>
+							<input type="text" id="project-name" name="name" placeholder="Projet Exemple" required />
+						</div>
+						<div class="field half">
+							<label for="project-date">Date</label>
+							<input type="text" id="project-date" name="date" placeholder="2026" required />
+						</div>
+						<div class="field half">
+							<label for="project-category">Categorie</label>
+							<select id="project-category" name="category">
+								<option value="school">Projet scolaire</option>
+								<option value="personal">Projet personnel</option>
+							</select>
+						</div>
+						<div class="field half">
+							<label for="project-status">Statut</label>
+							<input type="text" id="project-status" name="status" placeholder="En cours" />
+						</div>
+						<div class="field">
+							<label for="project-tags">Tags separes par des virgules</label>
+							<input type="text" id="project-tags" name="tags" placeholder="IA, Groupe, C++, Blueprint" />
+						</div>
+						<div class="field">
+							<label for="project-cover">Image principale</label>
+							<input type="text" id="project-cover" name="coverImage" placeholder="images/mon-projet.jpg" />
+						</div>
+						<div class="field">
+							<label for="project-images">Images, une par ligne</label>
+							<textarea id="project-images" name="images" rows="4" placeholder="images/mon-projet-1.jpg&#10;images/mon-projet-2.jpg"></textarea>
+						</div>
+						<div class="field">
+							<label for="project-descriptions">Descriptions, une par ligne</label>
+							<textarea id="project-descriptions" name="descriptions" rows="5" placeholder="Premiere description.&#10;Deuxieme description plus detaillee."></textarea>
+						</div>
+						<div class="field half">
+							<label for="project-github">Lien GitHub</label>
+							<input type="url" id="project-github" name="github" placeholder="https://github.com/..." />
+						</div>
+						<div class="field half">
+							<label for="project-store">Lien store</label>
+							<input type="url" id="project-store" name="store" placeholder="https://..." />
+						</div>
+					</div>
+
+					<ul class="actions">
+						<li><button type="submit" class="button primary">Generer le JSON</button></li>
+					</ul>
+				</form>
+
+				<label for="project-json-output">Resultat</label>
+				<textarea id="project-json-output" class="admin-output" rows="14" readonly></textarea>
+			</div>
+		</section>
+	</div>
+
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/portfolio.js"></script>
+<script>
+	function slugify(value) {
+		return value
+			.toLowerCase()
+			.normalize('NFD')
+			.replace(/[\u0300-\u036f]/g, '')
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/^-+|-+$/g, '');
+	}
+
+	function splitLines(value) {
+		return value
+			.split('\n')
+			.map(function (item) {
+				return item.trim();
+			})
+			.filter(Boolean);
+	}
+
+	function splitTags(value) {
+		return value
+			.split(',')
+			.map(function (item) {
+				return item.trim();
+			})
+			.filter(Boolean);
+	}
+
+	document.getElementById('project-generator-form').addEventListener('submit', function (event) {
+		event.preventDefault();
+
+		var form = event.currentTarget;
+		var data = new FormData(form);
+		var name = data.get('name').trim();
+		var coverImage = data.get('coverImage').trim();
+		var images = splitLines(data.get('images'));
+
+		if (coverImage && images.indexOf(coverImage) === -1) {
+			images.unshift(coverImage);
+		}
+
+		var project = {
+			slug: slugify(name),
+			name: name,
+			date: data.get('date').trim(),
+			category: data.get('category'),
+			status: data.get('status').trim(),
+			tags: splitTags(data.get('tags')),
+			coverImage: coverImage || images[0] || '',
+			images: images,
+			descriptions: splitLines(data.get('descriptions')),
+			links: {
+				github: data.get('github').trim(),
+				store: data.get('store').trim()
+			}
+		};
+
+		document.getElementById('project-json-output').value = JSON.stringify(project, null, 2);
+	});
+</script>
+
+</body>
+</html>
