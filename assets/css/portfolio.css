@@ -11,7 +11,6 @@
 	--glass-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
 	--glass-shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.35);
 	--accent: #6c5ce7;
-	--accent-hover: #8b7cf7;
 	--heading-accent: #7c6cf0;
 }
 
@@ -531,30 +530,6 @@ section > header h2 {
 	width: 34px;
 	height: 34px;
 	object-fit: contain;
-}
-
-.project-links {
-	margin-top: 10px;
-	display: flex;
-	gap: 15px;
-}
-
-.project-links .button-link {
-	display: inline-block;
-	padding: 6px 12px;
-	background-color: var(--accent);
-	color: #fff;
-	border-radius: 4px;
-	text-decoration: none;
-	font-weight: 600;
-	font-family: var(--font-display);
-	font-size: 0.8rem;
-	letter-spacing: 0.02em;
-	transition: background 0.2s;
-}
-
-.project-links .button-link:hover {
-	background-color: var(--accent-hover);
 }
 
 @media (prefers-reduced-motion: reduce) {

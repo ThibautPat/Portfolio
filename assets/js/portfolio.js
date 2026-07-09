@@ -89,20 +89,6 @@ function initStarfield() {
 	window.addEventListener('resize', onResize);
 }
 
-function disableParallax() {
-	if (typeof jQuery === 'undefined') {
-		return;
-	}
-
-	jQuery(window).off('scroll._parallax resize._parallax');
-
-	var bg = document.querySelector('#wrapper > .bg');
-	if (bg) {
-		bg.classList.add('fixed');
-		bg.style.transform = 'none';
-	}
-}
-
 function initSideNav() {
 	var nav = document.getElementById('nav');
 	var main = document.getElementById('main');
@@ -244,7 +230,6 @@ function bindSectionLinks(selector) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	disableParallax();
 	initStarfield();
 	initSideNav();
 	initCarousels();
