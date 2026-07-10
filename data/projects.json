@@ -7,10 +7,10 @@
       "category": "school",
       "status": "En cours",
       "tags": ["C++", "Gameplay", "Solo"],
-      "coverImage": "images/star_citizen.jpg",
+      "coverImage": "images/star_citizen.webp",
       "images": [
-        "images/star_citizen.jpg",
-        "images/dishonored.jpg"
+        "images/star_citizen.webp",
+        "images/dishonored.webp"
       ],
       "descriptions": [
         "Prototype C++ focalisé sur l'interconnexion de systèmes et les comportements émergents côté joueur.",
@@ -28,10 +28,10 @@
       "category": "school",
       "status": "En cours",
       "tags": ["Tools", "Level Design", "Groupe", "Blueprint"],
-      "coverImage": "images/dishonored.jpg",
+      "coverImage": "images/dishonored.webp",
       "images": [
-        "images/dishonored.jpg",
-        "images/Anno1800.jpg"
+        "images/dishonored.webp",
+        "images/Anno1800.webp"
       ],
       "descriptions": [
         "Editeur léger pour accélérer l'itération sur les niveaux et tester rapidement les mécaniques de jeu.",
@@ -49,10 +49,10 @@
       "category": "personal",
       "status": "En cours",
       "tags": ["Simulation", "Solo", "C++", "IA"],
-      "coverImage": "images/Anno1800.jpg",
+      "coverImage": "images/Anno1800.webp",
       "images": [
-        "images/Anno1800.jpg",
-        "images/star_citizen.jpg"
+        "images/Anno1800.webp",
+        "images/star_citizen.webp"
       ],
       "descriptions": [
         "Boucle de gestion et d'optimisation inspirée des jeux de simulation, avec focus sur la profondeur système.",
