@@ -1,6 +1,6 @@
 Portfolio de Thibaut Patry
 
-Le site comprend une page d'accueil et douze fiches projet internes.
+Le site comprend une page d'accueil et onze fiches projet internes.
 Les planètes sont des images fixes, sans animation ni bouton de contrôle.
 
 Pour consulter le site sans installation : ouvrir index.html dans un navigateur.

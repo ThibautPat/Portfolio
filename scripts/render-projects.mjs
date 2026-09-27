@@ -2,7 +2,7 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {projects} from '../data/projects.mjs';
 const root=new URL('../',import.meta.url);
 const escape = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const link = ([label,url],className='text-link') => `<a class="${className}" href="${escape(url)}" target="_blank" rel="noopener noreferrer">${escape(label)} <span aria-hidden="true">↗</span></a>`;
+const link = ([label,url],className='button') => `<a class="${className}" href="${escape(url)}" target="_blank" rel="noopener noreferrer">${escape(label)} <span aria-hidden="true">↗</span></a>`;
 const pageUrl = p => `projets/${p.slug}.html`;
 const contactLinks = [
   ['itch.io','https://apogriff.itch.io/'],
@@ -11,8 +11,7 @@ const contactLinks = [
   ['Email','mailto:patrythibautcontact@gmail.com']
 ].map(([label,url])=>`<a class="button" href="${escape(url)}"${url.startsWith('mailto:')?'':' target="_blank" rel="noopener noreferrer"'}>${label} <span aria-hidden="true">↗</span></a>`).join('');
 const groups=[
-  {id:'featured',title:'Projets sélectionnés',text:'C++, Unity, réseau et programmation graphique.'},
-  {id:'released',title:'Jeux publiés',text:'Des projets scolaires et de game jam, disponibles sur itch.io.'},
+  {id:'featured',title:'Projets scolaires',text:'C++, Unity, réseau et programmation graphique.'},
   {id:'experiments',title:'Prototypes & game jams',text:'Simulation, gameplay et intégration.'}
 ];
 function card(p){
@@ -36,7 +35,7 @@ await writeFile(new URL('index.html',root),home);
 await mkdir(new URL('projets/',root),{recursive:true});
 for(let i=0;i<projects.length;i++){
   const p=projects[i],next=projects[(i+1)%projects.length];
-  const sourceLinks=p.links.map((l,index)=>link(l,index===0?'button':'text-link')).join('');
+  const sourceLinks=p.links.map(l=>link(l)).join('');
   const html=`<!doctype html>
 <html lang="fr">
 <head>
@@ -51,7 +50,7 @@ for(let i=0;i<projects.length;i++){
 </head>
 <body class="project-page" style="--accent:${p.accent}">
   <a class="skip-link" href="#presentation">Aller à la présentation du projet</a>
-  <header class="header"><a class="brand" href="../index.html" aria-label="Thibaut Patry, accueil">thibaut<span class="brand-dot">.</span></a><nav aria-label="Navigation principale"><a href="../index.html#projets" aria-current="page">Mes projets</a><a href="../index.html#univers">À propos</a><a href="#contact" class="nav-contact">Contact</a></nav></header>
+  <header class="header"><a class="brand" href="../index.html" aria-label="Thibaut Patry, accueil">thibaut<span class="brand-dot">.</span></a><nav aria-label="Navigation principale"><a href="../index.html#projets" aria-current="page">Mes projets</a><a href="../index.html#univers">À propos</a><a href="#contact">Contact</a></nav></header>
   <main>
     <section class="project-hero" aria-labelledby="project-title">
       <img class="project-planet" src="../images/planets/${p.planet}.webp" alt="" width="1536" height="1024" fetchpriority="high">

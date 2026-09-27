@@ -44,17 +44,17 @@ export const projects = [
     links: [['Voir le code', 'https://github.com/ThibautPat/StarLancer']]
   },
   {
-    slug: 'for-shure', title: 'For-Shure Prototype', group: 'featured', category: 'C++ · Programmation graphique', role: 'Contribution au moteur', stack: ['C++', 'DirectX 12'], accent: '#c0cddd', planet: 'for-shure',
-    summary: 'Un prototype de moteur de rendu pour travailler avec une API graphique bas niveau.',
-    overview: 'For-Shure est un prototype de moteur de rendu en C++/DirectX 12. Ce projet collectif m’a permis de travailler sur l’organisation d’un moteur graphique et l’intégration de ses composants.',
-    facts: [['Type', 'Prototype technique'], ['Langage', 'C++'], ['API graphique', 'DirectX 12'], ['Domaine', 'Rendu']],
+    slug: 'for-shure', title: 'For-Shure', group: 'featured', category: 'C++ · Programmation graphique', role: 'Contribution au moteur', stack: ['C++', 'DirectX 12'], accent: '#c0cddd', planet: 'for-shure',
+    summary: 'Un moteur de rendu en C++/DirectX 12, créé pendant mes cours.',
+    overview: 'For-Shure est un moteur de rendu en C++/DirectX 12 créé pendant mes cours. Ce projet scolaire collectif m’a permis de travailler sur l’organisation d’un moteur graphique et l’intégration de ses composants.',
+    facts: [['Cadre', 'Projet scolaire'], ['Langage', 'C++'], ['API graphique', 'DirectX 12'], ['Domaine', 'Rendu']],
     workTitle: 'Ma contribution',
     work: ['Travail et intégration autour du système de fenêtre.', 'Participation à l’architecture du moteur et à l’intégration des composants graphiques.', 'Manipulation des composants de rendu : périphérique, commandes, matériaux et caméra.'],
     learning: ['Comprendre les responsabilités explicites d’une API graphique bas niveau.', 'Intégrer des composants conçus en parallèle dans une architecture commune.'],
     links: [['Voir le code', 'https://github.com/Arnaud-bd/For-Shure-Proto']]
   },
   {
-    slug: 'killer-penguin', title: 'Killer Penguin: The Lost', shortTitle: 'Killer Penguin', group: 'released', category: 'Plateforme · Game jam', role: 'Projet en équipe', stack: ['Plateforme', 'Windows', 'Game jam'], accent: '#b4e1ed', planet: 'killer-penguin', cover: 'killer-penguin.png',
+    slug: 'killer-penguin', title: 'Killer Penguin: The Lost', shortTitle: 'Killer Penguin', group: 'experiments', category: 'Plateforme · Game jam', role: 'Projet en équipe', stack: ['Plateforme', 'Windows', 'Game jam'], accent: '#b4e1ed', planet: 'killer-penguin', cover: 'killer-penguin.png',
     summary: 'Mr. Plop, un pingouin, part retrouver ce qu’il a perdu dans une aventure sur la glace.',
     overview: 'Killer Penguin: The Lost est un jeu de plateforme réalisé en équipe pour la Brackeys Game Jam 2025.2. Le joueur incarne Mr. Plop et l’accompagne à travers un environnement glacé. Une version Windows a été publiée sur itch.io.',
     facts: [['Cadre', 'Brackeys Jam 2025.2'], ['Genre', 'Plateforme'], ['Plateforme', 'Windows'], ['Disponibilité', 'Version publiée']],
@@ -64,7 +64,7 @@ export const projects = [
     links: [['Télécharger sur itch.io', 'https://apogriff.itch.io/killerpenguinthelost']]
   },
   {
-    slug: 'undesired', title: 'Undesired: One Room', group: 'released', category: 'Aventure · Game jam', role: 'Équipe de trois', stack: ['Première personne', 'Game jam', 'Windows / macOS / Linux'], accent: '#d6c3ab', planet: 'undesired', cover: 'undesired.png',
+    slug: 'undesired', title: 'Undesired: One Room', group: 'experiments', category: 'Aventure · Game jam', role: 'Équipe de trois', stack: ['Première personne', 'Game jam', 'Windows / macOS / Linux'], accent: '#d6c3ab', planet: 'undesired', cover: 'undesired.png',
     summary: 'Une aventure psychologique à la première personne, créée pendant une jam de 36 heures.',
     overview: 'Dans Undesired, le joueur est enfermé dans une pièce et doit chercher des indices pour en sortir. Le jeu repose sur une ambiance psychologique et des événements qui remettent en question ce qui paraît normal. Il a été réalisé en équipe de trois pendant une jam de 36 heures.',
     facts: [['Cadre', 'Game jam'], ['Durée de la jam', '36 heures'], ['Équipe', '3 personnes'], ['Genre', 'Aventure / énigmes']],
@@ -74,17 +74,7 @@ export const projects = [
     links: [['Télécharger sur itch.io', 'https://apogriff.itch.io/undesired-one-room']]
   },
   {
-    slug: 'super-smash-brick', title: 'Super Smash Brick', group: 'released', category: 'Casse-briques · Projet scolaire', role: 'Projet en binôme', stack: ['C++', 'SFML', 'Windows'], accent: '#cbe7ac', planet: 'super-smash-brick', cover: 'super-smash-brick.png',
-    summary: 'Un casse-briques en C++/SFML, réalisé à deux en une semaine.',
-    overview: 'Super Smash Brick est un casse-briques réalisé en binôme dans le cadre scolaire. Développé en C++ avec SFML sur une semaine, il dispose d’une version Windows publiée sur itch.io.',
-    facts: [['Cadre', 'Projet scolaire'], ['Durée', '1 semaine'], ['Équipe', '2 personnes'], ['Technologies', 'C++ / SFML']],
-    workTitle: 'Le projet',
-    work: ['Un jeu de casse-briques développé en C++/SFML.', 'Un périmètre de production défini pour une semaine de travail à deux.', 'Une version Windows téléchargeable sur itch.io.'],
-    learning: ['Passer d’un exercice de programmation à un petit jeu distribuable.', 'Répartir le travail d’un projet court en binôme.'],
-    links: [['Télécharger sur itch.io', 'https://apogriff.itch.io/super-smash-brick']]
-  },
-  {
-    slug: 'chronopost', title: 'ChronoPost Simulator', group: 'released', category: 'Course & livraison · Game jam', role: 'Développement en équipe', stack: ['Unity', 'C#', 'Windows'], accent: '#ecd1a0', planet: 'chronopost', cover: 'chronopost.png',
+    slug: 'chronopost', title: 'ChronoPost Simulator', group: 'experiments', category: 'Course & livraison · Game jam', role: 'Développement en équipe', stack: ['Unity', 'C#', 'Windows'], accent: '#ecd1a0', planet: 'chronopost', cover: 'chronopost.png',
     summary: 'Livrer les colis le plus vite possible, en évitant les obstacles sur la route.',
     overview: 'ChronoPost Simulator est un jeu 3D de course et de livraison réalisé pendant la Beginner’s Jam Winter 2024. Le joueur doit distribuer les colis d’une ville en évitant les obstacles. Le projet a été publié sur itch.io sous le nom SHARKstudio.',
     facts: [['Cadre', 'Winter Game Jam 2024'], ['Moteur', 'Unity'], ['Langage', 'C#'], ['Plateforme', 'Windows']],
@@ -94,7 +84,7 @@ export const projects = [
     links: [['Télécharger sur itch.io', 'https://sharkgamestudio.itch.io/chronopost-simulator'], ['Voir le code', 'https://github.com/ThibautPat/ChronosPost-Simulator']]
   },
   {
-    slug: 'squadron24', title: 'Squadron24', group: 'released', category: 'Shoot’em up · Projet scolaire', role: 'Projet scolaire', stack: ['C++', 'Windows'], accent: '#b0e4d0', planet: 'squadron24', cover: 'squadron24.png',
+    slug: 'squadron24', title: 'Squadron24', group: 'featured', category: 'Shoot’em up · Projet scolaire', role: 'Projet scolaire', stack: ['C++', 'Windows'], accent: '#b0e4d0', planet: 'squadron24', cover: 'squadron24.png',
     summary: 'Un shoot’em up de science-fiction en C++, disponible sur Windows.',
     overview: 'Squadron24 est un shoot’em up scolaire développé en C++. Il s’appuie sur une structure de moteur personnalisé et possède une version Windows publiée sur itch.io.',
     facts: [['Cadre', 'Projet scolaire'], ['Genre', 'Shoot’em up'], ['Langage', 'C++'], ['Plateforme', 'Windows']],
